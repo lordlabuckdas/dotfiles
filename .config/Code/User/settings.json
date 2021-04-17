@@ -1,0 +1,21 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "markdown-preview-enhanced.previewTheme": "one-dark.css",
+    "workbench.colorTheme": "Dracula Soft",
+    "editor.insertSpaces": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length 120",
+        "--ignore=W191"
+    ],
+	"foam.edit.linkReferenceDefinitions": "off",
+	"[markdown]": {
+        "editor.tabSize": 2
+    }
+}
