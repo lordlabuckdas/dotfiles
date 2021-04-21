@@ -1,0 +1,24 @@
+{
+	"suggest.maxCompleteItemCount": 10,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"python",
+		"json"
+	],
+	// "coc.preferences.formatOnType": true,
+	// python config
+	"python.venvPath": "$HOME/.virtualenvs",
+	// formatting
+	"python.formatting.provider": "black",
+	"python.formatting.blackPath": "~/.virtualenvs/neovim3/bin/black",
+	"python.formatting.blackArgs": [
+		"-l",
+		"120"
+	],
+	// linting
+	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Path": "~/.virtualenvs/neovim3/bin/flake8",
+	"python.linting.flake8Args": [
+		"--max-line-length",
+		"120"
+	]
+}
