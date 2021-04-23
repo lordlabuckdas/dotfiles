@@ -51,6 +51,13 @@ plugins=(git docker zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -67,12 +74,23 @@ DISTRO=linux-x64
 # env variables
 export EDITOR=vim
 export VISUAL=vim
+# lang
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
+# config
 export XDG_CONFIG_HOME=$HOME/.config
+# pyenv
 export PYENV_ROOT=$HOME/.pyenv
+# go
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
+# nnn
+export NNN_PLUG='c:fzcd;o:fzopen;h:fzhist'
+# export NNN_OPTS="deH"
+export NNN_BMS='p:~/Desktop/pd/'
+export NNN_OPENER=$XDG_CONFIG_HOME/nnn/plugins/nuke
+export NNN_FIFO='/tmp/nnn.fifo'
+export LC_COLLATE="C"
 
 # virtualenv
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

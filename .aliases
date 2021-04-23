@@ -33,3 +33,6 @@ alias vf='vi `fzf`'
 
 # ripgrep instead of grep
 alias grep='rg -p -s'
+
+# NNN_OPTS fix
+alias n='nnn -dcH'

@@ -8,7 +8,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'kevinhwang91/rnvimr', { 'on': 'RnvimrToggle' }
 " TODO: lazy load and execute rnvimr settings?
-Plug 'kevinhwang91/rnvimr'
+" Plug 'kevinhwang91/rnvimr'
+Plug 'mcchrish/nnn.vim'
 
 " search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -112,18 +113,18 @@ let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 
 " buffers
-nmap <leader>l :bn!<CR>
-nmap <leader>h :bp!<CR>
-" nmap <leader>d :bd<CR>
-nmap <leader>d :bd!<CR>
-nmap <leader>n :enew<CR>
+nmap <leader>l :bn!<cr>
+nmap <leader>h :bp!<cr>
+" nmap <leader>d :bd<cr>
+nmap <leader>d :bd!<cr>
+nmap <leader>b :enew<cr>
 
 " escape to normal from insert
-inoremap jk <ESC>
+inoremap jk <esc>
 
 " escape terminal
-" NOTE: messes with floating term windows
-" tnoremap <ESC><ESC> <C-\><C-n>
+" NOTE: slows closing of floating term windows
+" tnoremap <esc><esc> <C-\><C-n>
 
 " hardcore
 noremap <Up> <Nop>
@@ -132,40 +133,52 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " fzf
-nnoremap <Leader>ff :Files<CR>
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>g :Rg<CR>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fl :Lines<cr>
+nnoremap <leader>g :Rg<cr>
 
 " compilation
-au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++14 -O2 % -o %:r && ./%:r < ip.txt > op.txt<CR>
-au filetype python nnoremap <F5> :w <bar> !python %<CR>
-au filetype go nnoremap <F5> :w <bar> !go run %<CR>
+au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++14 -O2 % -o %:r && ./%:r < ip.txt > op.txt<cr>
+au filetype python nnoremap <F5> :w <bar> !python %<cr>
+au filetype go nnoremap <F5> :w <bar> !go run %<cr>
 
 " paired brackets
 inoremap ( ()<left>
-inoremap { {}<left>        " paste input testcases
-inoremap {{ {              au filetype text nnoremap <F6> ggVGp :w<CR>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {} {}             " nerdtree
+inoremap (( (
+inoremap () ()
+inoremap (<cr> (<cr>)<esc>O
+inoremap { {}<left>
+inoremap {{ {
+inoremap {} {}
+inoremap {<cr> {<cr>}<esc>O
 
-" let NERDTreeQuitOnOpen = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let NERDTreeShowHidden = 1
-" map <C-n> :NERDTreeToggle<CR>
+" paste input testcases
+au filetype text nnoremap <F6> ggVGp :w<cr>
 
 " airline
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['branch', 'tabline', 'fugitiveline', 'whitespace', 'wordcount', 'branch', 'quickfix', 'term', 'coc']
 
+" nerdtree
+" let NERDTreeQuitOnOpen = 1
+" let NERDTreeAutoDeleteBuffer = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+" let NERDTreeShowHidden = 1
+" map <C-n> :NERDTreeToggle<cr>
+
 " ranger
-nnoremap <silent> <leader>r :RnvimrToggle<CR>
-let g:rnvimr_enable_ex = 1
-let g:rnvimr_enable_picker = 1
-let g:rnvimr_enable_bw = 1
+" nnoremap <silent> <leader>r :RnvimrToggle<cr>
+" let g:rnvimr_enable_ex = 1
+" let g:rnvimr_enable_picker = 1
+" let g:rnvimr_enable_bw = 1
+
+" nnn
+let g:nnn#set_default_mappings = 0
+let g:nnn#command = 'nnn -dH'
+nnoremap <silent> <leader>n :NnnPicker<cr>
 
 " markdown preview
 let g:mkdp_browser = 'firefox'
