@@ -51,6 +51,14 @@ plugins=(git docker zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+# b8r suggestions
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -67,10 +75,14 @@ DISTRO=linux-x64
 # env variables
 export EDITOR=vim
 export VISUAL=vim
+# lang
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
+# config
 export XDG_CONFIG_HOME=$HOME/.config
+# pyenv
 export PYENV_ROOT=$HOME/.pyenv
+# go
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 

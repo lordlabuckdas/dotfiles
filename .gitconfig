@@ -3,6 +3,7 @@
 	email = 55460753+lordlabuckdas@users.noreply.github.com
 [core]
 	editor = nvim
+	pager = less -F
 [apply]
 	whitespace = fix
 [color]
