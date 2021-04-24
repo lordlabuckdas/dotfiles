@@ -64,3 +64,30 @@ while (low <= high) {
 	}
 }
 endsnippet
+
+snippet lc "leetcode template" bw
+#include "bits/stdc++.h"
+using namespace std;
+
+class Solution {
+	public:
+		${2:vector<int>} roll(${1:vector<int>} &num);
+};
+
+$2 Solution::roll($1 &num) {
+	int n = num.size();
+	$2 v(n);
+	$0
+	return v;
+}
+
+int main() {
+	Solution rick = Solution();
+	$1 ip = {1, 2, 3};
+	$2 op = rick.roll(ip);
+	for(auto it: op) {
+		cout<<it<<" ";
+	}
+	return 0;
+}
+endsnippet
