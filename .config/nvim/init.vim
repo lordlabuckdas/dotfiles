@@ -4,10 +4,7 @@ call plug#begin('~/.vim/plugged')
 " colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-" explorer
-" Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'kevinhwang91/rnvimr', { 'on': 'RnvimrToggle' }
-" TODO: lazy load and execute rnvimr settings?
+" file explorer
 Plug 'kevinhwang91/rnvimr'
 
 " search
@@ -17,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 " text manip
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -42,6 +40,7 @@ set nocompatible
 set noshowmode
 
 " colors
+set background=dark
 colorscheme dracula
 set termguicolors
 set t_Co=256
@@ -69,10 +68,12 @@ set hidden
 " display
 set showcmd
 set scrolloff=5
-" set cmdheight=2
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+" set cmdheight=2
+" set cursorline
 " set signcolumn=number
+" set list
+" set listchars=eol:¬
 
 " backup
 set nobackup
@@ -82,10 +83,13 @@ set nowritebackup
 set updatetime=300
 set autoread
 set autowrite
+set ttyfast
+set lazyredraw
 
 " indentation & tab supremacy
 set autoindent
 set smartindent
+set shiftround
 set smarttab
 set tabstop=4 softtabstop=0 shiftwidth=4
 
@@ -150,15 +154,8 @@ au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++14 
 au filetype python nnoremap <F5> :w <bar> !python %<cr>
 au filetype go nnoremap <F5> :w <bar> !go run %<cr>
 
-" paired brackets
-inoremap ( ()<left>
-inoremap (( (
-inoremap () ()
-inoremap (<cr> (<cr>)<esc>O
-inoremap { {}<left>
-inoremap {{ {
-inoremap {} {}
-inoremap {<cr> {<cr>}<esc>O
+" auto-pairs
+let g:AutoPairsFlyMode = 1
 
 " paste input testcases
 au filetype text nnoremap <F6> ggVGp :w<cr>
@@ -167,14 +164,6 @@ au filetype text nnoremap <F6> ggVGp :w<cr>
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['branch', 'tabline', 'fugitiveline', 'whitespace', 'wordcount', 'branch', 'quickfix', 'term', 'coc']
-
-" nerdtree
-" let NERDTreeQuitOnOpen = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let NERDTreeShowHidden = 1
-" map <C-n> :NERDTreeToggle<cr>
 
 " ranger
 nnoremap <silent> <leader>r :RnvimrToggle<cr>
@@ -191,4 +180,4 @@ let g:UltiSnipsSnippetDirectories=[$XDG_CONFIG_HOME.'/nvim/snips']
 
 " coc
 source $XDG_CONFIG_HOME/nvim/coc.vim
-let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-go']
+let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-go', 'coc-rust-analyzer']
