@@ -1,0 +1,107 @@
+[user]
+	name = lordlabuckdas
+	email = 55460753+lordlabuckdas@users.noreply.github.com
+[core]
+	editor = vim
+	pager = less -F
+[apply]
+	whitespace = fix
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 1
+[rerere]
+	enabled = true
+[alias]
+	a = add
+	aa = add --all
+	########
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	########
+	c = commit
+	cm = commit -m
+	cam = commit -am
+	cd = commit --amend
+	cl = clone
+	########
+	d = diff
+	dt = difftool
+	########
+	f = fetch
+	fo = fetch origin
+	fu = fetch upstream
+	########
+	l = log --oneline
+	lg = log --oneline --graph --decorate
+	########
+	m = merge
+	ma = merge --abort
+	mc = merge --continue
+	ms = merge --skip
+	########
+	o = checkout
+	om = checkout main
+	ob = checkout -b
+	########
+	ps = push
+	psf = push -f
+	psu = push -u
+	pst = push --tags
+	pso = push origin
+	psao = push --all origin
+	psfo = push -f origin
+	psuo = push -u origin
+	psom = push origin main
+	psaom = push --all origin main
+	psfom = push -f origin main
+	psuom = push -u origin main
+	########
+	pl = pull
+	pb = pull --rebase
+	plo = pull origin
+	pbo = pull --rebase origin
+	plom = pull origin main
+	pbom = pull --rebase origin main
+	plu = pull upstream
+	plum = pull upstream main
+	pbum = pull --rebase upstream main
+	########
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase --skip
+	########
+	re = reset
+	rh = reset HEAD
+	reh = reset --hard
+	rem = reset --mixed
+	res = reset --soft
+	rehh = reset --hard HEAD
+	remh = reset --mixed HEAD
+	resh = reset --soft HEAD
+	########
+	r = remote
+	ra = remote add
+	rr = remote rm
+	rv = remote -v
+	rao = remote add origin
+	rau = remote add upstream
+	########
+	s = status
+	sb = status -s -b
+	########
+	t = tag
+	td = tag -d
+[init]
+	defaultBranch = main

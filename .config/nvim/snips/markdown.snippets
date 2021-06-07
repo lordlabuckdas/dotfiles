@@ -1,0 +1,45 @@
+snippet ini "title metadata" bw
+---
+title: "${1:title}"
+---
+
+$0
+endsnippet
+
+snippet pdd "day's pd init" bw
+# `date +%Y-%m-%d`
+
+* $1
+
+## checklist
+
+* [ ] $0
+endsnippet
+
+snippet pdm "month's pd init" bw
+# `date +%Y-%m`
+
+* $1
+
+## checklist
+
+* [ ] $0
+
+## days
+
+* $2
+endsnippet
+
+snippet rmd "reveal-md metadata"
+---
+title: ${1:Title}
+verticalSeparator: "^\n\n"
+---
+# $1
+### ${2:Author}
+##### `date '+%B %d, %Y'`
+
+---
+
+# $0
+endsnippet
