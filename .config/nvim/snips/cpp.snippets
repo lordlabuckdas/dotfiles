@@ -1,6 +1,6 @@
 snippet tpl "cp template" bw
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(NULL)
+#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 using namespace std;
 
 int main() {
@@ -10,29 +10,10 @@ int main() {
 }
 endsnippet
 
-snippet wt "while(t--)"
-while(${1:t}}--) {
-	$0
-}
-endsnippet
-
-snippet trn "ternary operator"
-${1:condition}:${2:true}:${3:true};
-endsnippet
-
-snippet sp "space"
-<< " " <<
-endsnippet
-
-snippet nl "newline"
-<< "\n" <<
-endsnippet
-
 snippet sieve "sieve of eratosthenes"
-bool prime[1000007];
+vector<bool> prime(1e6+7, 0);
 
 void sieve(long long n) {
-	memset(prime, true, (n + 1)*sizeof(bool));
 	prime[0] = prime[1] = false;
 	for (long long p = 2; p * p <= n; p++) {
 		if (prime[p] == true) {
@@ -63,12 +44,7 @@ snippet lc "leetcode template" bw
 #include "bits/stdc++.h"
 using namespace std;
 
-class Solution {
-	public:
-		$2 roll($1);
-};
-
-$2 Solution::roll($1) {
+$2 roll($1) {
 	// int n = A.size();
 	// int m = A[0].size();
 	$2 $4;
@@ -77,9 +53,8 @@ $2 Solution::roll($1) {
 }
 
 int main() {
-	Solution rick = Solution();
 	$1;
-	$2 op = rick.roll();
+	$2 op = roll();
 	// cout<<op;
 	// for(auto i: op) {
 	// 	cout<<i<<" ";
@@ -93,32 +68,16 @@ int main() {
 }
 endsnippet
 
-snippet lili "linked list functions" bw
-class ListNode {
-public:
+snippet lili "linked list structure" bw
+struct ListNode {
 	int val;
 	ListNode *next;
 	ListNode(): val(0), next(NULL) {}
 	ListNode(int x): val(x), next(NULL) {}
 };
+endsnippet
 
-ListNode* llStarter() {
-	ListNode *head = NULL;
-	ListNode *tmp = new ListNode();
-	head = tmp;
-	tmp->val = 1;
-	tmp->next = NULL;
-	ListNode *prev = tmp;
-	for(int i=2;i<7;i++) {
-		tmp = new ListNode();
-		tmp->val = i;
-		tmp->next = NULL;
-		prev->next = tmp;
-		prev = tmp;
-	}
-	return head;
-}
-
+snippet funclili "linked list functions" bw
 void printLL(ListNode *head) {
 	ListNode *tmp = head;
 	while(tmp!=NULL) {
@@ -149,8 +108,19 @@ ListNode* midLL(ListNode *head) {
 
 endsnippet
 
-snippet comb "nCr" bw
+snippet testlili "linked list starter" bw
+ListNode *head = new ListNode(1), *tmp;
+ListNode *prev = head;
+for(int i=2;i<7;i++) {
+	tmp = new ListNode();
+	tmp->val = i;
+	tmp->next = NULL;
+	prev->next = tmp;
+	prev = tmp;
+}
+endsnippet
 
+snippet comb "nCr" bw
 long ncr(int n,int r)
 {
 	long ans=1;
@@ -167,6 +137,161 @@ long ncr(int n,int r)
 		}
 	}
 	return ans;
+}
+
+endsnippet
+
+snippet nodetree "treeNode" bw
+struct TreeNode {
+	int val;
+	TreeNode *left, *right;
+	TreeNode(int x): val(x), left(NULL), right(NULL) {}
+};
+
+endsnippet
+
+snippet bst "binary search tree" bw
+class bst {
+	TreeNode *root;
+public:
+	bst() {
+		root=NULL;
+	}
+	bool isEmpty() {
+		return (root==NULL);
+	}
+	void insertNode(int data) {
+		TreeNode *temp = new TreeNode(data);
+		if(isEmpty()) {
+			root = temp;
+		} else {
+			TreeNode *parent=NULL, *ptr=root;
+			while(ptr!=NULL) {
+				parent = ptr;
+				if(data > ptr->val)
+					ptr=ptr->right;
+				else
+					ptr=ptr->left;
+			}
+			if(data < parent->val)
+				parent->left = temp;
+			else
+				parent->right = temp;
+		}
+	}
+	void inOrderTraversalRec() {
+		inOrderTraversalRec(root);
+	}
+	void preOrderTraversalRec() {
+		preOrderTraversalRec(root);
+	}
+	void postOrderTraversalRec() {
+		postOrderTraversalRec(root);
+	}
+	void inOrderTraversalRec(TreeNode *ptr) {
+		if(ptr!=NULL) {
+			inOrderTraversalRec(ptr->left);
+			cout<<ptr->val<<" ";
+			inOrderTraversalRec(ptr->right);
+		}
+	}
+	void preOrderTraversalRec(TreeNode *ptr) {
+		if(ptr!=NULL) {
+			cout<<ptr->val<<" ";
+			preOrderTraversalRec(ptr->left);
+			preOrderTraversalRec(ptr->right);
+		}
+	}
+	void postOrderTraversalRec(TreeNode *ptr) {
+		if(ptr!=NULL) {
+			postOrderTraversalRec(ptr->left);
+			postOrderTraversalRec(ptr->right);
+			cout<<ptr->val<<" ";
+		}
+	}
+	void inOrderTraversalItr() {
+		TreeNode *curr = root;
+		stack<TreeNode*> s;
+		while(curr!=NULL || !s.empty()) {
+			if(curr!=NULL) {
+				s.push(curr);
+				curr = curr->left;
+			} else {
+				curr = s.top();
+				s.pop();
+				cout<<curr->val<<" ";
+				curr = curr->right;
+			}
+		}
+	}
+	void preOrderTraversalItr() {
+		if(isEmpty())
+			return;
+		TreeNode *curr = root;
+		stack<TreeNode*> s;
+		s.push(curr);
+		while(!s.empty()) {
+			curr = s.top();
+			s.pop();
+			cout<<curr->val<<" ";
+			if(curr->right)
+				s.push(curr->right);
+			if(curr->left)
+				s.push(curr->left);
+		}
+	}
+	void postOrderTraversalItr() {
+		stack<TreeNode*> s;
+		s.push(root);
+		stack<int> out;
+		while (!s.empty()) {
+			TreeNode* curr = s.top();
+			s.pop();
+			out.push(curr->val);
+			if (curr->left) {
+				s.push(curr->left);
+			}
+			if (curr->right) {
+				s.push(curr->right);
+			}
+		}
+		while (!out.empty()) {
+			cout << out.top() << " ";
+			out.pop();
+		}
+	}
+};
+
+endsnippet
+
+snippet inorder "inorder tree traversal" bw
+void inOrderTraversalRec(TreeNode *ptr) {
+	if(ptr!=NULL) {
+		inOrderTraversalRec(ptr->left);
+		cout<<ptr->val<<" ";
+		inOrderTraversalRec(ptr->right);
+	}
+}
+
+endsnippet
+
+snippet testtree "starter template for trees" bw
+TreeNode *root = new TreeNode(1);
+root->left = new TreeNode(2);
+root->right = new TreeNode(3);
+root->left->left = new TreeNode(4);
+root->left->right = new TreeNode(5);
+root->right->left = new TreeNode(6);
+root->right->right = new TreeNode(7);
+endsnippet
+
+snippet debmac "macro for debugging" bw
+#define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
+template<typename ...Args>
+void logger(string vars, Args&&... values) {
+	cout << vars << " = ";
+	string delim = "";
+	(..., (cout << delim << values, delim = ", "));
 }
 
 endsnippet

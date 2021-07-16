@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " file explorer
 Plug 'kevinhwang91/rnvimr'
@@ -81,7 +82,8 @@ set showcmd
 set scrolloff=5
 set shortmess+=c
 " set cmdheight=2
-" set cursorline
+set cursorline
+set linebreak
 " set signcolumn=number
 " set list
 " set listchars=eol:¬
@@ -113,7 +115,7 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 " let g:vim_markdown_folding_disabled = 1
-" let g:vim_markdown_folding_level = 3
+let g:vim_markdown_folding_level = 3
 " let g:vim_markdown_folding_style_pythonic = 1
 
 " vimwiki
@@ -163,7 +165,9 @@ nnoremap <leader>fl :Lines<cr>
 nnoremap <leader>g :Rg<cr>
 
 " compilation
-au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++14 -O2 % -o %:r && ./%:r < ip.txt > op.txt<cr>
+au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++17 -O2 % -o %:r && ./%:r < ip.txt > op.txt<cr>
+" au filetype cpp nnoremap <F5> :w <bar> !g++ -Wall -Wno-unused-result -std=c++17 -O2 % -o %:r<cr>
+" au filetype cpp nnoremap <F6> :!./%:r < ip.txt > op.txt<cr>
 au filetype python nnoremap <F5> :w <bar> !python %<cr>
 au filetype go nnoremap <F5> :w <bar> !go run %<cr>
 au filetype rust nnoremap <F5> :w <bar> !cargo run<cr>
@@ -171,10 +175,22 @@ au filetype rust nnoremap <F5> :w <bar> !cargo run<cr>
 " auto-pairs
 " let g:AutoPairsFlyMode = 1
 
+" simple autopairing
+inoremap { {}<left>
+inoremap {} {}
+inoremap {{ {
+inoremap {<cr> {<cr>}<esc>O
+
+" cpp syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
 " select all
 nnoremap <C-a> ggVG<cr>
 
-" paste input testcases
+" replace file with clipboard content
 au filetype text nnoremap <F6> ggVGp :w<cr>
 
 " airline
