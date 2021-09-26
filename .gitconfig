@@ -2,7 +2,7 @@
 	name = lordlabuckdas
 	email = 55460753+lordlabuckdas@users.noreply.github.com
 [core]
-	editor = vim
+	editor = v
 	pager = less -F
 [apply]
 	whitespace = fix
@@ -13,9 +13,11 @@
 	interactive = auto
 	diff = auto
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 [difftool]
 	prompt = false
+[difftool "nvimdiff"]
+        cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [help]
 	autocorrect = 1
 [rerere]

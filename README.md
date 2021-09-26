@@ -4,8 +4,7 @@ collection of my arch dotfiles
 
 **theme** - [dracula](https://draculatheme.com)
 
-* [neovim](.config/nvim/init.vim)
-	* [coc settings](.config/nvim/coc-settings.json)
+* [neovim](.config/nvim/init.lua)
 * [zsh](.config/zsh)
 * [alacritty](.config/alacritty/alacritty.yml)
 * [xinitrc](.config/x11/xinitrc)

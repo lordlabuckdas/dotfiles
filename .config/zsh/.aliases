@@ -29,7 +29,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # alias pandoc='docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker'
 
 # vi + fzf
-alias vf='vi `fzf`'
+alias vf='v `fzf`'
+
+alias vv='v ~/desktop/pd/"$(date +%Y-%m/%Y-%m-%d)".md'
 
 # ripgrep instead of grep
 alias grep='rg -p'
