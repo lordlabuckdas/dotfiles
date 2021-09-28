@@ -3,3 +3,7 @@ require('lualine').setup {
     theme = 'dracula-nvim'
   }
 }
+
+-- require('feline').setup {
+
+-- }

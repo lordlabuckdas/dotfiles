@@ -9,7 +9,10 @@ o.termguicolors = true
 g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
-g.netrw_menu = 0
+g.loaded_netrw = 0
+g.loaded_netrwPlugin = 0
+g.loaded_netrwSettings = 0
+g.loaded_netrwFileHandlers = 0
 g.node_host_prog = '$HOME/.npm-global/bin/neovim-node-host'
 g.python3_host_prog = '$HOME/.virtualenvs/neovim3/bin/python'
 
@@ -19,6 +22,7 @@ o.mouse = 'a'
 o.encoding = 'utf-8'
 o.backspace = 'indent,eol,start'
 o.wildmenu = true
+o.completeopt = 'menu,menuone,noselect'
 
 -- display
 o.number = true
