@@ -3,6 +3,9 @@ local map = vim.api.nvim_set_keymap
 -- convenient escape
 map('i', 'jk', '<Esc>', {})
 
+-- select entire buffer
+map('n', '<C-a>', 'ggVG', {})
+
 -- telescope keybinds
 map('n', '<Leader>f', ':Telescope find_files<CR>', {})
 map('n', '<Leader>g', ':Telescope git_files<CR>', {})

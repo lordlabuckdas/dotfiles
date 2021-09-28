@@ -153,7 +153,7 @@ void logger(string vars, Args&&... values) {
             wordTrig = true,
         },
         [[
-cout<<$1<<' ';
+cout<<#$1<<" = "<<$1;
 ]]),
     },
 }
