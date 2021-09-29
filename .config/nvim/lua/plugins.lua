@@ -1,20 +1,25 @@
 return require('packer').startup(function()
+    -- meta lol
     use {
         'wbthomason/packer.nvim',
     }
 
+    -- dracula good, other bad
     use {
         'Mofiqul/dracula.nvim',
     }
 
+    -- good looking icons
     use {
         'kyazdani42/nvim-web-devicons',
     }
 
+    -- aux
     use {
         'nvim-lua/plenary.nvim',
     }
 
+    -- git
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
@@ -25,16 +30,25 @@ return require('packer').startup(function()
         end,
     }
 
+    -- faster searching
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
+
+    -- searching & fm
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            'nvim-lua/plenary.nvim'
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
         },
         config = function()
             require('telescope_conf')
         end,
     }
 
+    -- should configure this some day
     -- use {
     --     'famiu/feline.nvim',
     --     requires = {
@@ -46,6 +60,7 @@ return require('packer').startup(function()
     --     end,
     -- }
 
+    -- statusline ftw
     use {
         'hoob3rt/lualine.nvim',
         config = function()
@@ -53,6 +68,7 @@ return require('packer').startup(function()
         end,
     }
 
+    -- easier comments
     use {
         'b3nj5m1n/kommentary',
         config = function()
@@ -60,6 +76,7 @@ return require('packer').startup(function()
         end,
     }
 
+    -- syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
@@ -69,6 +86,7 @@ return require('packer').startup(function()
         end,
     }
 
+    -- native lsp
     use {
         'neovim/nvim-lspconfig',
         config = function()
@@ -76,14 +94,17 @@ return require('packer').startup(function()
         end,
     }
 
+    -- completions aux
     use {
         'hrsh7th/cmp-nvim-lsp',
     }
 
+    -- completions aux
     use {
         'hrsh7th/cmp-buffer',
     }
 
+    -- completions
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -95,6 +116,7 @@ return require('packer').startup(function()
         end,
     }
 
+    -- snippet engine
     use {
         'L3MON4D3/LuaSnip',
         requires = {
@@ -102,6 +124,7 @@ return require('packer').startup(function()
         },
     }
 
+    -- cmp + luasnip
     use {
         'saadparwaiz1/cmp_luasnip',
         requires = {
@@ -110,6 +133,7 @@ return require('packer').startup(function()
         },
     }
 
+    -- good looking windows
     use {
         'akinsho/bufferline.nvim',
         requires = {
@@ -122,6 +146,7 @@ return require('packer').startup(function()
         end,
     }
 
+    -- GOATed latex plugin
     use {
         'lervag/vimtex',
         config = function()
