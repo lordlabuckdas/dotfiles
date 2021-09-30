@@ -1,5 +1,7 @@
 local telescope = require('telescope')
 
+-- TODO: display hidden files while respecting gitignore
+-- TODO: check default search command, replace with rg if necessary
 telescope.setup {
     pickers = {
         find_files = {
@@ -25,11 +27,15 @@ telescope.setup {
     },
 }
 
+-- fzf-like searching & speed
 telescope.load_extension('fzf')
 
+-- if directory is passed as an arg
+-- open telescope to choose file
 _G.open_telescope = function()
     local first_arg = vim.v.argv[2]
     if first_arg and vim.fn.isdirectory(first_arg) == 1 then
+        -- delete existing dir buffer
         vim.api.nvim_exec([[:bd!]], false)
         require("telescope.builtin").find_files({
             search_dirs = {

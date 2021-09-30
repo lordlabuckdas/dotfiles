@@ -149,6 +149,7 @@ return require('packer').startup(function()
     -- GOATed latex plugin
     use {
         'lervag/vimtex',
+        ft = { 'tex' },
         config = function()
             require('tex')
         end,

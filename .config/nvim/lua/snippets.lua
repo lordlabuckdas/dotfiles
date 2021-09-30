@@ -80,11 +80,11 @@ int main() {
 	$1;
 	$2 op = solve();
 	// cout<<op;
-	// for(auto i: op) {
+	// for(auto &i: op) {
 	// 	cout<<i<<" ";
 	// }
-	// for(auto i: op) {
-	// 	for(auto j: i)
+	// for(auto &i: op) {
+	// 	for(auto &j: i)
 	// 		cout<<j<<" ";
 	// 	cout<<"\n";
 	// }

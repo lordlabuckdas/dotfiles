@@ -38,7 +38,8 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
     'pyright',
-    'rust_analyzer'
+    'rust_analyzer',
+    'gopls',
 }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
