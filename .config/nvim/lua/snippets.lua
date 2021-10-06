@@ -22,8 +22,7 @@ int main() {
 	SYNC;
 	$0
 	return 0;
-}
-]]),
+}]]),
         ls.parser.parse_snippet({
             trig = "sieve",
             wordTrig = true,
@@ -89,8 +88,7 @@ int main() {
 	// 	cout<<"\n";
 	// }
 	return 0;
-}
-]]),
+}]]),
         ls.parser.parse_snippet({
             trig = "listnode",
             wordTrig = true,
@@ -153,7 +151,6 @@ void logger(string vars, Args&&... values) {
             wordTrig = true,
         },
         [[
-cout<<#$1<<" = "<<$1;
-]]),
+cout<<#$1<<" = "<<$1;]]),
     },
 }

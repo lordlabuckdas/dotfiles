@@ -33,7 +33,7 @@ return require('packer').startup(function()
     -- faster searching
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
+        run = 'make',
     }
 
     -- searching & fm
@@ -45,6 +45,19 @@ return require('packer').startup(function()
         },
         config = function()
             require('telescope_conf')
+        end,
+    }
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        },
+        cmd = {
+            'NvimTreeToggle',
+        },
+        config = function()
+            require("nvim_tree_conf")
         end,
     }
 
