@@ -31,3 +31,7 @@ collection of my arch dotfiles
 * [gtk2](.config/gtk-2.0/gtkfilechooser.ini)
 * [gtk3](.config/gtk-3.0/settings.ini)
 * [user-dirs](.config/user-dirs.dirs)
+
+## note
+
+thanks to [NvChad](https://github.com/NvChad/NvChad) for some inspiration and [lspkind-nvim](https://github.com/onsails/lspkind-nvim) for icons

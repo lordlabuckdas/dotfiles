@@ -8,9 +8,10 @@ cmp.setup({
     },
     formatting = {
         format = function(entry, vim_item)
+            vim_item.kind = require('lsp_icons')[vim_item.kind]
             vim_item.menu = ({
                 nvim_lsp = '[LSP]',
-                nvim_lua = '[SNP]',
+                luasnip = '[SNP]',
                 buffer = '[BUF]',
             })[entry.source.name]
             return vim_item
@@ -25,8 +26,8 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+            if cmp.visible() then
+                cmp.select_next_item()
             elseif require('luasnip').expand_or_jumpable() then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
             else
@@ -34,8 +35,8 @@ cmp.setup({
             end
         end,
         ['<S-Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
+            if cmp.visible() then
+                cmp.select_prev_item()
             elseif require('luasnip').jumpable(-1) then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
             else
@@ -47,15 +48,17 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
+        { name = 'path' },
     }
 })
 
--- Setup lspconfig.
+-- setup lspconfig
 local servers = {
     'pyright',
     'rust_analyzer',
     'gopls',
 }
+
 for _, lsp in ipairs(servers) do
     require('lspconfig')[lsp].setup {
         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
