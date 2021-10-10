@@ -13,7 +13,7 @@ vim.g.nvim_tree_show_icons = {
 }
 
 require('nvim-tree').setup {
-    lsp_diagnostics = true,
+    diagnostics = { enable = true },
 }
 
 -- if directory is passed as an arg
