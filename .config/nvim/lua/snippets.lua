@@ -15,13 +15,100 @@ ls.snippets = {
         },
         [[
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0)
+#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
+using ll = long long;
+const double EPS = 1e-9;
+const double PI = 3.14159265359;
+const int MOD = 1e9 + 7;
+const int INF = 2e9;
 
 int main() {
-	SYNC;
-	$0
-	return 0;
+  SYNC;
+  $0
+  return 0;
+}]]),
+        ls.parser.parse_snippet({
+            trig = "us",
+            wordTrig = true,
+        },
+        [[
+#include "bits/stdc++.h"
+#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<long long, long long>;
+using vi = vector<int>;
+using vii = vector<pair<int, int>>;
+const double EPS = 1e-9;
+const double PI = 3.14159265359;
+const int MOD = 1e9 + 7;
+const int INF = 2e9;
+
+int main() {
+  SYNC;
+  freopen("$1.in", "r", stdin);
+  freopen("$1.out", "w", stdout);
+  $0
+}]]),
+        ls.parser.parse_snippet({
+            trig = "hc",
+            wordTrig = true,
+        },
+        [[
+#include "bits/stdc++.h"
+#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<long long, long long>;
+using vi = vector<int>;
+using vii = vector<pair<int, int>>;
+const double EPS = 1e-9;
+const double PI = 3.14159265359;
+const int MOD = 1e9 + 7;
+const int INF = 2e9;
+
+int main() {
+  SYNC;
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
+  int t;
+  cint>>t;
+  for(int case = 1; case <= t; case++) {
+      int ans = 0;
+      $0
+      cout<<"Case #" << case << ": " << ans << endl;
+  }
+}]]),
+        ls.parser.parse_snippet({
+            trig = "ks",
+            wordTrig = true,
+        },
+        [[
+#include "bits/stdc++.h"
+#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
+using namespace std;
+using ll = long long;
+using pii = pair<int, int>;
+using pll = pair<long long, long long>;
+using vi = vector<int>;
+using vii = vector<pair<int, int>>;
+const double EPS = 1e-9;
+const double PI = 3.14159265359;
+const int MOD = 1e9 + 7;
+const int INF = 2e9;
+
+int main() {
+  SYNC;
+  int t;
+  cint>>t;
+  for(int case = 1; case <= t; case++) {
+      int ans = 0;
+      $0
+      cout<<"Case #" << case << ": " << ans << endl;
+  }
 }]]),
         ls.parser.parse_snippet({
             trig = "sieve",
@@ -31,13 +118,13 @@ int main() {
 vector<bool> prime(1e6+7, 0);
 
 void sieve(long long n) {
-	prime[0] = prime[1] = false;
-	for (long long p = 2; p * p <= n; p++) {
-		if (prime[p] == true) {
-			for (long long i = p * p; i <= n; i += p)
-				prime[i] = false;
-		}
-	}
+  prime[0] = prime[1] = false;
+  for (long long p = 2; p * p <= n; p++) {
+    if (prime[p] == true) {
+      for (long long i = p * p; i <= n; i += p)
+        prime[i] = false;
+    }
+  }
 }
 ]]),
         ls.parser.parse_snippet({
@@ -47,16 +134,16 @@ void sieve(long long n) {
         [[
 long long low = ${1:0}, high = ${2:n - 1}, mid;
 while (low <= high) {
-	mid = low + (high - low) / 2;
-	if (${3:a}[mid] < ${4:x}) {
-		low = mid + 1;
-	}
-	else if (${3:a}[mid] == ${4:x}) {
-		$0
-	}
-	else {
-		high = mid - 1;
-	}
+  mid = low + (high - low) / 2;
+  if (${3:a}[mid] < ${4:x}) {
+    low = mid + 1;
+  }
+  else if (${3:a}[mid] == ${4:x}) {
+    $0
+  }
+  else {
+    high = mid - 1;
+  }
 }
 ]]),
         ls.parser.parse_snippet({
@@ -68,26 +155,26 @@ while (low <= high) {
 using namespace std;
 
 $2 solve($1) {
-	// int n = A.size();
-	// int m = A[0].size();
-	$2 $4;
-	$0
-	return $4;
+  // int n = A.size();
+  // int m = A[0].size();
+  $2 $4;
+  $0
+  return $4;
 }
 
 int main() {
-	$1;
-	$2 op = solve();
-	// cout<<op;
-	// for(auto &i: op) {
-	// 	cout<<i<<" ";
-	// }
-	// for(auto &i: op) {
-	// 	for(auto &j: i)
-	// 		cout<<j<<" ";
-	// 	cout<<"\n";
-	// }
-	return 0;
+  $1;
+  $2 op = solve();
+  // cout<<op;
+  // for(auto &i: op) {
+  //   cout<<i<<" ";
+  // }
+  // for(auto &i: op) {
+  //   for(auto &j: i)
+  //     cout<<j<<" ";
+  //   cout<<"\n";
+  // }
+  return 0;
 }]]),
         ls.parser.parse_snippet({
             trig = "listnode",
@@ -95,10 +182,10 @@ int main() {
         },
         [[
 struct ListNode {
-	${1:int} val;
-	ListNode *next;
-	ListNode(): val(0), next(NULL) {}
-	ListNode(${1:int} x): val(x), next(NULL) {}
+  ${1:int} val;
+  ListNode *next;
+  ListNode(): val(0), next(NULL) {}
+  ListNode(${1:int} x): val(x), next(NULL) {}
 };
 ]]),
         ls.parser.parse_snippet({
@@ -107,9 +194,9 @@ struct ListNode {
         },
         [[
 struct TreeNode {
-	${1:int} val;
-	TreeNode *left, *right;
-	TreeNode(${1:int} x): val(x), left(NULL), right(NULL) {}
+  ${1:int} val;
+  TreeNode *left, *right;
+  TreeNode(${1:int} x): val(x), left(NULL), right(NULL) {}
 };
 ]]),
         ls.parser.parse_snippet({
@@ -118,19 +205,19 @@ struct TreeNode {
         },
         [[
 long ncr(int n,int r) {
-	long ans=1;
-	r=r>n-r?n-r:r;
-	int j=1;
-	for(;j<=r;j++,n--) {
-		if(n%j==0) {
-			ans*=n/j;
-		} else if(ans%j==0) {
-			ans=ans/j*n;
-		} else {
-			ans=(ans*n)/j;
-		}
-	}
-	return ans;
+  long ans=1;
+  r=r>n-r?n-r:r;
+  int j=1;
+  for(;j<=r;j++,n--) {
+    if(n%j==0) {
+      ans*=n/j;
+  	} else if(ans%j==0) {
+      ans=ans/j*n;
+  	} else {
+      ans=(ans*n)/j;
+  	}
+  }
+  return ans;
 }
 ]]),
         ls.parser.parse_snippet({
@@ -141,9 +228,9 @@ long ncr(int n,int r) {
 #define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
 template<typename ...Args>
 void logger(string vars, Args&&... values) {
-	cout << vars << " = ";
-	string delim = "";
-	(..., (cout << delim << values, delim = ", "));
+  cout << vars << " = ";
+  string delim = "";
+  (..., (cout << delim << values, delim = ", "));
 }
 ]]),
         ls.parser.parse_snippet({

@@ -60,3 +60,6 @@ o.ttyfast = true
 
 -- files
 o.ff = 'unix'
+
+-- md and cpp indent to 2
+vim.cmd[[autocmd FileType markdown,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2]]
