@@ -15,7 +15,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -41,7 +41,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 15
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -64,7 +64,7 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#6272a4"
+    frame_color = "#282a36"
 
     # Define a color for the separator.
     # possible values are:
@@ -82,7 +82,7 @@
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 0
+    idle_threshold = 120
 
     ### Text ###
 
@@ -126,17 +126,20 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<b>%s</b> %p\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
     alignment = left
+
+    # Vertical alignment of message text and icon.
+    # Possible values are "top", "center" and "bottom".
     vertical_alignment = center
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = -1
+    show_age_threshold = 180
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
@@ -163,11 +166,16 @@
     # Align icons left/right/off
     icon_position = left
 
+    # Scale small icons up to this size, set to 0 to disable. Helpful
+    # for e.g. small files or high-dpi screens. In case of conflict,
+    # max_icon_size takes precedence over this.
+    min_icon_size = 0
+
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 60
 
     # Paths to default icons.
-    # icon_path = /home/marc/.icons/default
+    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/legacy/:/usr/share/icons/hicolor/16x16/apps/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/hicolor/16x16/status/:/usr/share/icons/hicolor/16x16/devices
 
     ### History ###
 
@@ -180,7 +188,7 @@
 
     ### Misc/Advanced ###
 
-    # dmenu path
+    # dmenu path.
 	dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
@@ -200,12 +208,27 @@
     # automatically after a crash.
     startup_notification = false
 
+    # Manage dunst's desire for talking
+    # Can be one of the following values:
+    #  crit: Critical features. Dunst aborts
+    #  warn: Only non-fatal warnings
+    #  mesg: Important Messages
+    #  info: all unimportant stuff
+    # debug: all less than unimportant stuff
+    verbosity = mesg
+
     # Define the corner radius of the notification window
     # in pixel size. If the radius is 0, you have no rounded
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
     corner_radius = 0
+
+    # Ignore the dbus closeNotification message.
+    # Useful to enforce the timeout set by dunst configuration. Without this
+    # parameter, an application may close the notification sent before the
+    # user defined timeout.
+    ignore_dbusclose = false
 
     ### Legacy
 
@@ -228,9 +251,21 @@
     #              invoke it. If there are multiple and no default, open the context menu.
     # * close_current: Close current notification.
     # * close_all: Close all notifications.
+    # These values can be strung together for each mouse event, and
+    # will be executed in sequence.
     mouse_left_click = close_current
-    mouse_middle_click = do_action
+    mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
+
+# Experimental features that may or may not work correctly. Do not expect them
+# to have a consistent behaviour across releases.
+[experimental]
+    # Calculate the dpi to use on a per-monitor basis.
+    # If this setting is enabled the Xft.dpi value will be ignored and instead
+    # dunst will attempt to calculate an appropriate dpi value for each monitor
+    # using the resolution and physical size. This might be useful in setups
+    # where there are multiple screens with very different dpi values.
+    per_monitor_dpi = false
 
 [shortcuts]
 
@@ -240,10 +275,10 @@
     # Xev might be helpful to find names for keys.
 
     # Close notification.
-    close = ctrl+Escape
+    close = ctrl+space
 
     # Close all notifications.
-    #close_all = ctrl+shift+space
+    close_all = ctrl+shift+space
 
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
@@ -252,27 +287,27 @@
     history = ctrl+grave
 
     # Context menu.
-    # context = ctrl+shift+period
+    context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#44475a"
-    foreground = "#bd93f9"
+    background = "#282a36"
+    foreground = "#6272a4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#44475a"
+    background = "#282a36"
     foreground = "#bd93f9"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#44475a"
-    foreground = "#bd93f9"
+    background = "#ff5555"
+    foreground = "#f8f8f2"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
@@ -321,7 +356,75 @@
 # NOTE: It might be help#e5e9f0ful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-#########################################################
-#               APPLICATION NOTIFICATIONS               #
-#########################################################
-# vim:ft=cfg
+# Disable the transient hint so that idle_threshold cannot be bypassed from the
+# client
+#[transient_disable]
+#    match_transient = yes
+#    set_transient = no
+#
+# Make the handling of transient notifications more strict by making them not
+# be placed in history.
+#[transient_history_ignore]
+#    match_transient = yes
+#    history_ignore = yes
+
+# fullscreen values
+# show: show the notifications, regardless if there is a fullscreen window opened
+# delay: displays the new notification, if there is no fullscreen window active
+#        If the notification is already drawn, it won't get undrawn.
+# pushback: same as delay, but when switching into fullscreen, the notification will get
+#           withdrawn from screen again and will get delayed like a new notification
+#[fullscreen_delay_everything]
+#    fullscreen = delay
+#[fullscreen_show_critical]
+#    msg_urgency = critical
+#    fullscreen = show
+
+#[espeak]
+#    summary = "*"
+#    script = dunst_espeak.sh
+
+#[script-test]
+#    summary = "*script*"
+#    script = dunst_test.sh
+
+#[ignore]
+#    # This notification will not be displayed
+#    summary = "foobar"
+#    format = ""
+
+#[history-ignore]
+#    # This notification will not be saved in history
+#    summary = "foobar"
+#    history_ignore = yes
+
+#[skip-display]
+#    # This notification will not be displayed, but will be included in the history
+#    summary = "foobar"
+#    skip_display = yes
+
+#[signed_on]
+#    appname = Pidgin
+#    summary = "*signed on*"
+#    urgency = low
+#
+#[signed_off]
+#    appname = Pidgin
+#    summary = *signed off*
+#    urgency = low
+#
+#[says]
+#    appname = Pidgin
+#    summary = *says*
+#    urgency = critical
+#
+#[twitter]
+#    appname = Pidgin
+#    summary = *twitter.com*
+#    urgency = normal
+#
+#[stack-volumes]
+#    appname = "some_volume_notifiers"
+#    set_stack_tag = "volume"
+#
+# vim: ft=cfg

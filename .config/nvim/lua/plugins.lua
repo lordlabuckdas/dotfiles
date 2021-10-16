@@ -1,20 +1,20 @@
-return require('packer').startup(function()
+return require('packer').startup({function()
     -- meta lol
-    use { 'wbthomason/packer.nvim' }
+    use 'wbthomason/packer.nvim'
 
     -- dracula good, other bad
-    use { 'Mofiqul/dracula.nvim' }
+    use 'Mofiqul/dracula.nvim'
 
     -- good looking icons
-    use { 'kyazdani42/nvim-web-devicons' }
+    use 'kyazdani42/nvim-web-devicons'
 
     -- aux
-    use { 'nvim-lua/plenary.nvim' }
+    use 'nvim-lua/plenary.nvim'
 
     -- git
     use {
         'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        requires = 'nvim-lua/plenary.nvim',
         config = function()
             require('gitsigns').setup()
         end,
@@ -40,7 +40,7 @@ return require('packer').startup(function()
 
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require("nvim_tree_conf")
         end,
@@ -93,8 +93,8 @@ return require('packer').startup(function()
     }
 
     -- completions aux
-    use { 'hrsh7th/cmp-nvim-lsp' }
-    use { 'hrsh7th/cmp-buffer' }
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
 
     -- completions
     use {
@@ -111,7 +111,7 @@ return require('packer').startup(function()
     -- snippet engine
     use {
         'L3MON4D3/LuaSnip',
-        requires = { 'hrsh7th/nvim-cmp' },
+        requires = 'hrsh7th/nvim-cmp',
     }
 
     -- cmp + luasnip
@@ -126,7 +126,7 @@ return require('packer').startup(function()
     -- good looking windows
     use {
         'akinsho/bufferline.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('bufferline').setup{
                 diagnostics = 'nvim_lsp',
@@ -137,9 +137,27 @@ return require('packer').startup(function()
     -- GOATed latex plugin
     use {
         'lervag/vimtex',
-        ft = { 'tex' },
+        ft = 'tex',
         config = function()
             require('tex')
         end,
     }
-end)
+
+    -- markdown
+    use 'godlygeek/tabular'
+    use {
+        'plasticboy/vim-markdown',
+        requires = 'godlygeek/tabular',
+        config = function()
+            require('md')
+        end,
+    }
+end,
+config = {
+    display = {
+        open_fn = function()
+            return require('packer.util').float({ border = 'single' })
+        end,
+        prompt_border = 'single',
+    }
+}})
