@@ -47,7 +47,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # plugins
-plugins=(git gh zsh-autosuggestions docker)
+plugins=(git gh zsh-autosuggestions docker pip)
 
 source $ZSH/oh-my-zsh.sh
 

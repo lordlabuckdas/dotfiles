@@ -14,6 +14,7 @@ vim.g.nvim_tree_show_icons = {
 
 require('nvim-tree').setup {
     diagnostics = { enable = true },
+    view = { auto_resize = true },
 }
 
 -- if directory is passed as an arg
@@ -35,3 +36,4 @@ augroup END
 
 -- telescope keybinds
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>n', ':NvimTreeFocus<CR>', {})

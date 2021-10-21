@@ -175,7 +175,7 @@
     max_icon_size = 60
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/legacy/:/usr/share/icons/hicolor/16x16/apps/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/hicolor/16x16/status/:/usr/share/icons/hicolor/16x16/devices
+    icon_path = /usr/share/icons/Adwaita/24x24/status/:/usr/share/icons/Adwaita/24x24/legacy/:/usr/share/icons/hicolor/24x24/apps/:/usr/share/icons/Adwaita/24x24/devices/:/usr/share/icons/hicolor/24x24/status/:/usr/share/icons/hicolor/24x24/devices
 
     ### History ###
 

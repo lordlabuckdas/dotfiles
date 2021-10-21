@@ -45,9 +45,6 @@ o.smartindent = true
 o.shiftround = true
 o.smarttab = true
 o.expandtab = true
-o.foldenable = true
-o.foldmethod = 'indent'
-o.foldlevel = 2
 
 -- buffers
 o.hidden = true
@@ -64,5 +61,5 @@ o.ttyfast = true
 -- files
 o.ff = 'unix'
 
--- md & cpp -> 2-space indent
-vim.cmd[[autocmd FileType markdown,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2]]
+-- md
+vim.cmd[[autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 foldenable foldmethod=indent foldlevel=2]]
