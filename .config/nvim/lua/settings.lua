@@ -63,3 +63,8 @@ o.ff = 'unix'
 
 -- md
 vim.cmd[[autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 foldenable foldmethod=indent foldlevel=2]]
+
+-- transparency
+vim.cmd("hi Normal guibg=NONE")
+vim.cmd("hi Folded guibg=NONE")
+vim.cmd("hi Folded guifg=NONE")

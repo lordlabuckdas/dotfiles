@@ -1,8 +1,3 @@
-vim.g.nvim_tree_ignore = { 
-    '.git',
-    'node_modules',
-    '.cache'
-}
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_add_trailing = 1
@@ -15,6 +10,14 @@ vim.g.nvim_tree_show_icons = {
 require('nvim-tree').setup {
     diagnostics = { enable = true },
     view = { auto_resize = true },
+    filters = {
+        custom = {
+            '.git',
+            'node_modules',
+            '.cache',
+            '__pycache__',
+        }
+    }
 }
 
 -- if directory is passed as an arg

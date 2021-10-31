@@ -13,6 +13,15 @@ vim.api.nvim_set_keymap('n', '<Leader>d', ':bd!<CR>', {})
 -- TODO: fix text object
 -- vim.api.nvim_set_keymap('n', 'gx', ':!xdg-open <cWORD> &<CR><CR>', { noremap = true })
 
--- cpp build and run
+-- cpp
 vim.cmd[[au filetype cpp nnoremap <Leader>mc :w <bar> !g++ -Wall -Wextra -Wshadow -fsanitize=undefined -std=c++17 -O2 -o %:r % <CR>]]
 vim.cmd[[au filetype cpp nnoremap <Leader>mr :!./%:r < ip.txt > op.txt <CR>]]
+
+-- python
+vim.cmd[[au filetype python nnoremap <Leader>mr :w <bar> !python % <CR>]]
+
+-- go
+vim.cmd[[au filetype go nnoremap <Leader>mr :!go run % <CR>]]
+
+-- rust
+vim.cmd[[au filetype rust nnoremap <Leader>mr :!cargo run % <CR>]]

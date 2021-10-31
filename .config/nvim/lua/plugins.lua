@@ -144,10 +144,15 @@ return require('packer').startup({function()
     }
 
     -- markdown
-    use 'godlygeek/tabular'
+    use {
+        'godlygeek/tabular',
+        ft = 'markdown',
+    }
+
     use {
         'plasticboy/vim-markdown',
         requires = 'godlygeek/tabular',
+        ft = 'markdown',
         config = function()
             require('md')
         end,
