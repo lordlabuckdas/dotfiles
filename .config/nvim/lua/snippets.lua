@@ -15,16 +15,11 @@ ls.snippets = {
         },
         [[
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
-using ll = long long;
-const double EPS = 1e-9;
-const double PI = 3.14159265359;
-const int MOD = 1e9 + 7;
-const int INF = 2e9;
 
 int main() {
-    SYNC;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     $0
     return 0;
 }]]),
@@ -34,20 +29,11 @@ int main() {
         },
         [[
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
-using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<long long, long long>;
-using vi = vector<int>;
-using vii = vector<pair<int, int>>;
-const double EPS = 1e-9;
-const double PI = 3.14159265359;
-const int MOD = 1e9 + 7;
-const int INF = 2e9;
 
 int main() {
-    SYNC;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     freopen("$1.in", "r", stdin);
     freopen("$1.out", "w", stdout);
     $0
@@ -58,20 +44,11 @@ int main() {
         },
         [[
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
-using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<long long, long long>;
-using vi = vector<int>;
-using vii = vector<pair<int, int>>;
-const double EPS = 1e-9;
-const double PI = 3.14159265359;
-const int MOD = 1e9 + 7;
-const int INF = 2e9;
 
 int main() {
-    SYNC;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     int t;
@@ -88,20 +65,11 @@ int main() {
         },
         [[
 #include "bits/stdc++.h"
-#define SYNC std::ios_base::sync_with_stdio(0);cin.tie(0)
 using namespace std;
-using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<long long, long long>;
-using vi = vector<int>;
-using vii = vector<pair<int, int>>;
-const double EPS = 1e-9;
-const double PI = 3.14159265359;
-const int MOD = 1e9 + 7;
-const int INF = 2e9;
 
 int main() {
-    SYNC;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     int t;
     cint>>t;
     for(int case = 1; case <= t; case++) {
@@ -109,6 +77,21 @@ int main() {
         $0
         cout<<"Case #" << case << ": " << ans << endl;
     }
+}]]),
+        ls.parser.parse_snippet({
+            trig = "cses",
+            wordTrig = true,
+        },
+        [[
+#include "bits/stdc++.h"
+using namespace std;
+#define int long long
+
+signed main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    $0
+    return 0;
 }]]),
         ls.parser.parse_snippet({
             trig = "sieve",
@@ -247,6 +230,110 @@ cout<<#$1<<" = "<<$1;]]),
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 using ordered_set = tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>;
+]]),
+        ls.parser.parse_snippet({
+            trig = "auue",
+            wordTrig = true,
+        },
+        [[
+void add_undirected_unweighted_edge(int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}]]),
+        ls.parser.parse_snippet({
+            trig = "adue",
+            wordTrig = true,
+        },
+        [[
+void add_directed_unweighted_edge(int u, int v) {
+    adj[u].push_back(v);
+}]]),
+        ls.parser.parse_snippet({
+            trig = "auwe",
+            wordTrig = true,
+        },
+        [[
+void add_undirected_weighted_edge(int u, int v, int w) {
+    adj[u].push_back({v, w});
+    adj[v].push_back({u, w});
+}]]),
+        ls.parser.parse_snippet({
+            trig = "adwe",
+            wordTrig = true,
+        },
+        [[
+void add_directed_weighted_edge(int u, int v, int w) {
+    adj[u].push_back({v, w});
+}]]),
+        ls.parser.parse_snippet({
+            trig = "dsus",
+            wordTrig = true,
+        },
+        [[
+int par[(size_t)(1e5 + 1)];
+int sizee[(size_t)(1e5 + 1)];
+
+void make_set(int u) {
+    par[u] = u;
+    sizee[u] = 1;
+}
+
+int find_set(int u) {
+    if(u == par[u])
+        return u;
+    return par[u] = find_set(par[u]);
+}
+
+bool union_set(int u, int v) {
+    u = find_set(u);
+    v = find_set(v);
+    if(u == v)
+        return false;
+    if(sizee[u] < sizee[v])
+        swap(u, v);
+    par[v] = u;
+    sizee[u] += sizee[v];
+    return true;
+}]]),
+        ls.parser.parse_snippet({
+            trig = "dsur",
+            wordTrig = true,
+        },
+        [[
+int par[(size_t)(1e5 + 1)];
+int rankk[(size_t)(1e5 + 1)];
+
+void make_set(int u) {
+    par[u] = u;
+    rankk[u] = 0;
+}
+
+int find_set(int u) {
+    if(u == par[u])
+        return u;
+    return par[u] = find_set(par[u]);
+}
+
+bool union_set(int u, int v) {
+    u = find_set(u);
+    v = find_set(v);
+    if(u == v)
+        return false;
+    if(rankk[u] < rankk[v])
+        swap(u, v);
+    par[v] = u;
+    if(rankk[u] == rankk[v])
+        rankk[u]++;
+    return true;
+}]]),
+        ls.parser.parse_snippet({
+            trig = "dv",
+            wordTrig = true,
+        },
+        [[
+const int dr[4] = {0, 1, 0, -1};
+const int dc[4] = {1, 0, -1, 0};
+const string ds = "RDLU";
 ]]),
     },
 }
