@@ -1,18 +1,21 @@
 local o = vim.opt
 local g = vim.g
+local cmd = vim.cmd
 
 -- colors
-vim.cmd[[colorscheme dracula]]
 o.termguicolors = true
+g.dracula_show_end_of_buffer = true
+g.dracula_transparent_bg = true
+cmd[[colorscheme dracula]]
 
 -- providers
-g.loaded_python_provider = 0
-g.loaded_ruby_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_netrw = 0
-g.loaded_netrwPlugin = 0
-g.loaded_netrwSettings = 0
-g.loaded_netrwFileHandlers = 0
+g.loaded_python_provider = false
+g.loaded_ruby_provider = false
+g.loaded_perl_provider = false
+g.loaded_netrw = false
+g.loaded_netrwPlugin = false
+g.loaded_netrwSettings = false
+g.loaded_netrwFileHandlers = false
 g.node_host_prog = '$HOME/.npm-global/bin/neovim-node-host'
 g.python3_host_prog = '$HOME/.virtualenvs/neovim3/bin/python'
 
@@ -25,11 +28,21 @@ o.wildmenu = true
 o.completeopt = 'menu,menuone,noselect'
 
 -- display
-o.number = true
 o.cursorline = true
 o.scrolloff = 5
 o.conceallevel = 2
 o.linebreak = true
+-- TODO: fix listchars
+o.showbreak = '↪\\ '
+o.listchars = {
+    space = '␣',
+    tab = '→\\ ',
+    precedes = '«',
+    extends = '»',
+    eol = '¬',
+    trail = '_',
+    nbsp = '~',
+}
 
 -- search
 o.hlsearch = true
@@ -62,9 +75,14 @@ o.ttyfast = true
 o.ff = 'unix'
 
 -- md
-vim.cmd[[autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 foldenable foldmethod=indent foldlevel=2]]
+cmd[[autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 foldenable foldmethod=indent foldlevel=2]]
 
--- transparency
-vim.cmd("hi Normal guibg=NONE")
-vim.cmd("hi Folded guibg=NONE")
-vim.cmd("hi Folded guifg=NONE")
+-- numbering
+o.number = true
+cmd[[
+augroup NumberToggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+]]
