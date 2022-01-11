@@ -53,7 +53,7 @@ telescope.load_extension('fzf')
 -- ]], false)
 
 -- telescope keybinds
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>g', ':Telescope git_files<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>b', ':Telescope buffers<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>w', ':Telescope live_grep<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>tf', ':Telescope find_files<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>tg', ':Telescope git_files<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>tb', ':Telescope buffers<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>tw', ':Telescope live_grep<CR>', {})
