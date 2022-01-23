@@ -98,15 +98,16 @@ signed main() {
             wordTrig = true,
         },
         [[
-vector<bool> prime(1e6+7, 0);
+vector<bool> is_prime(1e6+1, 1);
 
-void sieve(long long n) {
-    prime[0] = prime[1] = false;
-    for (long long p = 2; p * p <= n; p++) {
-        if (prime[p] == true) {
-            for (long long i = p * p; i <= n; i += p)
-                prime[i] = false;
-      }
+void sieve(int n = 1e6 + 1) {
+    is_prime[0] = is_prime[1] = false;
+    for(int i = 2; i <= n; ++i) {
+        if(is_prime[i] && (long long)i * i <= n) {
+            for(int j = i * i; j <= n; j += i) {
+                is_prime[j] = false;
+            }
+        }
     }
 }
 ]]),
@@ -130,6 +131,32 @@ while (low <= high) {
 }
 ]]),
         ls.parser.parse_snippet({
+            trig = "bpow",
+            wordTrig = true,
+        },
+        [[
+long long bpow(long long b, long long p, long long m) {
+    long long ans = 1;
+    b %= m;
+    while(p) {
+        if(p & 1)
+            ans = ans * b % m;
+        b = b * b % m;
+        p >>= 1;
+    }
+    return ans;
+}
+]]),
+        ls.parser.parse_snippet({
+            trig = "imod",
+            wordTrig = true,
+        },
+        [[
+long long imod(long long n, long long m = 1e9 + 7) {
+    return bpow(n, m - 2, m);
+}
+]]),
+        ls.parser.parse_snippet({
             trig = "lc",
             wordTrig = true,
         },
@@ -138,8 +165,8 @@ while (low <= high) {
 using namespace std;
 
 $2 solve($1) {
-    // int n = A.size();
-    // int m = A[0].size();
+    // int n = nums.size();
+    // int m = nums[0].size();
     $2 $4;
     $0
     return $4;
