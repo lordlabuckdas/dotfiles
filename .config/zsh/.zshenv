@@ -25,4 +25,4 @@ export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
 source $HOME/.local/bin/virtualenvwrapper.sh
 
 # path
-export PATH=$HOME/.pyenv/shims:/usr/local/texlive/2021/bin/x86_64-linux:$HOME/.local/bin:$HOME/.npm-global/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.pyenv/bin:$PATH
+export PATH=$HOME/.pyenv/shims:/usr/local/texlive/2021/bin/x86_64-linux:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.npm-global/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.pyenv/bin:$PATH
