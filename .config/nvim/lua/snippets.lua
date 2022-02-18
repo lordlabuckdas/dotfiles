@@ -293,74 +293,46 @@ void add_directed_weighted_edge(int u, int v, int w) {
     adj[u].push_back({v, w});
 }]]),
         ls.parser.parse_snippet({
-            trig = "dsus",
+            trig = "dsu",
             wordTrig = true,
         },
         [[
-int par[(size_t)(1e5 + 1)];
-int sizee[(size_t)(1e5 + 1)];
-
-void make_set(int u) {
-    par[u] = u;
-    sizee[u] = 1;
-}
-
-int find_set(int u) {
-    if(u == par[u])
-        return u;
-    return par[u] = find_set(par[u]);
-}
-
-bool union_set(int u, int v) {
-    u = find_set(u);
-    v = find_set(v);
-    if(u == v)
-        return false;
-    if(sizee[u] < sizee[v])
-        swap(u, v);
-    par[v] = u;
-    sizee[u] += sizee[v];
-    return true;
-}]]),
-        ls.parser.parse_snippet({
-            trig = "dsur",
-            wordTrig = true,
-        },
-        [[
-int par[(size_t)(1e5 + 1)];
-int rankk[(size_t)(1e5 + 1)];
-
-void make_set(int u) {
-    par[u] = u;
-    rankk[u] = 0;
-}
-
-int find_set(int u) {
-    if(u == par[u])
-        return u;
-    return par[u] = find_set(par[u]);
-}
-
-bool union_set(int u, int v) {
-    u = find_set(u);
-    v = find_set(v);
-    if(u == v)
-        return false;
-    if(rankk[u] < rankk[v])
-        swap(u, v);
-    par[v] = u;
-    if(rankk[u] == rankk[v])
-        rankk[u]++;
-    return true;
-}]]),
-        ls.parser.parse_snippet({
-            trig = "dv",
-            wordTrig = true,
-        },
-        [[
-const int dr[4] = {0, 1, 0, -1};
-const int dc[4] = {1, 0, -1, 0};
-const string ds = "RDLU";
+class DSU {
+private:
+    vector<int> par, rnk;
+    int cap;
+    DSU(int n) {
+        cap = n;
+        par.resize(n + 1);
+        rnk.resize(n + 1);
+        for(int i = 1; i <= n; ++i)
+            par[i] = i, rnk[i] = 0;
+    }
+public:
+    int find_set(int u) {
+        if(u == par[u])
+            return u;
+        return par[u] = find_set(par[u]);
+    }
+    bool union_set(int u, int v) {
+        u = find_set(u);
+        v = find_set(v);
+        if(u == v)
+            return false;
+        if(rnk[u] < rnk[v])
+            swap(u, v);
+        par[v] = u;
+        if(rnk[u] == rnk[v])
+            ++rnk[u];
+        return true;
+    }
+    int size() {
+        int count = 0;
+        for(int i = 1; i <= cap; ++i)
+            count += par[i] == i;
+        return count;
+    }
+};
 ]]),
     },
 }
