@@ -297,42 +297,77 @@ void add_directed_weighted_edge(int u, int v, int w) {
             wordTrig = true,
         },
         [[
-class DSU {
+class union_find {
 private:
-    vector<int> par, rnk;
-    int cap;
-    DSU(int n) {
-        cap = n;
-        par.resize(n + 1);
-        rnk.resize(n + 1);
-        for(int i = 1; i <= n; ++i)
-            par[i] = i, rnk[i] = 0;
-    }
+    vector<int> e;
+    int num_sets;
 public:
-    int find_set(int u) {
-        if(u == par[u])
-            return u;
-        return par[u] = find_set(par[u]);
+    union_find(int n) {
+        e.resize(n + 1, -1);
+        num_sets = n;
     }
-    bool union_set(int u, int v) {
+    int find_set(int u) {
+        return e[u] < 0 ? u : e[u] = find_set(e[u]);
+    }
+    bool in_same_set(int u, int v) {
+        return find_set(u) == find_set(v);
+    }
+    int size() {
+        return num_sets;
+    }
+    int size(int u) {
+        return -e[find_set(u)];
+    }
+    bool merge_set(int u, int v) {
         u = find_set(u);
         v = find_set(v);
         if(u == v)
             return false;
-        if(rnk[u] < rnk[v])
+        --num_sets;
+        if(e[u] > e[v])
             swap(u, v);
-        par[v] = u;
-        if(rnk[u] == rnk[v])
-            ++rnk[u];
+        e[u] += e[v];
+        e[v] = u;
         return true;
-    }
-    int size() {
-        int count = 0;
-        for(int i = 1; i <= cap; ++i)
-            count += par[i] == i;
-        return count;
     }
 };
 ]]),
+        ls.parser.parse_snippet({
+            trig = "krusk",
+            wordTrig = true,
+        },
+        [[
+pair<long long, vector<tuple<int, int, int>>> kruskal(vector<tuple<int, int, int>> &edges, int &n) {
+    sort(edges.begin(), edges.end(), [](const tuple<int, int, int> &a, const tuple<int, int, int> &b) -> bool {
+        return get<2>(a) < get<2>(b);
+    });
+    long long cost = 0;
+    vector<tuple<int, int, int>> mst_edges(n - 1);
+    int idx = 0;
+    union_find mst(n);
+    for(auto [u, v, w]: edges) {
+        if(mst.in_same_set(u, v))
+            continue;
+        cost += w;
+        mst_edges[idx++] = {u, v, w};
+        mst.merge_set(u, v);
+    }
+    return {cost, mst_edges};
+}]]),
+        ls.parser.parse_snippet({
+            trig = "make_edges",
+            wordTrig = true,
+        },
+        [[
+vector<tuple<int, int, int>> make_edge_list(vector<vector<pair<int, int>>> &adj) {
+    vector<tuple<int, int, int>> edges;
+    int V = adj.size();
+    for(int u = 0; u < V; ++u) {
+        for(auto [v, w]: adj[u]) {
+            edges.push_back({u, v, w});
+        }
+    }
+    return edges;
+}]]),
     },
 }
