@@ -1,4 +1,4 @@
-vim.g.nvim_tree_indent_markers = 1
+-- vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_add_trailing = 1
 vim.g.nvim_tree_show_icons = {
@@ -8,8 +8,14 @@ vim.g.nvim_tree_show_icons = {
 }
 
 require('nvim-tree').setup {
-    diagnostics = { enable = true },
-    view = { auto_resize = true },
+    diagnostics = {
+        enable = true,
+    },
+    actions = {
+        open_file = {
+            resize_window = true,
+        },
+    },
     filters = {
         custom = {
             '.git',
@@ -17,7 +23,12 @@ require('nvim-tree').setup {
             '.cache',
             '__pycache__',
         }
-    }
+    },
+    renderer = {
+        indent_markers = {
+            enable = true,
+        }
+    },
 }
 
 -- if directory is passed as an arg

@@ -134,13 +134,13 @@ return require('packer').startup({function()
     }
 
     -- GOATed latex plugin
-    use {
-        'lervag/vimtex',
-        ft = 'tex',
-        config = function()
-            require('tex')
-        end,
-    }
+    -- use {
+    --     'lervag/vimtex',
+    --     ft = 'tex',
+    --     config = function()
+    --         require('tex')
+    --     end,
+    -- }
 
     -- markdown
     use {
@@ -149,7 +149,7 @@ return require('packer').startup({function()
     }
 
     use {
-        'plasticboy/vim-markdown',
+        'preservim/vim-markdown',
         requires = 'godlygeek/tabular',
         ft = 'markdown',
         config = function()

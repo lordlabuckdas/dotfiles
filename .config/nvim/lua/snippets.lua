@@ -7,11 +7,9 @@ ls.config.setup({
 	store_selection_keys = "<Tab>",
 })
 
-ls.snippets = {
-    cpp = {
+ls.add_snippets("cpp", {
         ls.parser.parse_snippet({
             trig = "tpl",
-            wordTrig = true,
         },
         [[
 #include "bits/stdc++.h"
@@ -25,7 +23,6 @@ int main() {
 }]]),
         ls.parser.parse_snippet({
             trig = "us",
-            wordTrig = true,
         },
         [[
 #include "bits/stdc++.h"
@@ -40,7 +37,6 @@ int main() {
 }]]),
         ls.parser.parse_snippet({
             trig = "hc",
-            wordTrig = true,
         },
         [[
 #include "bits/stdc++.h"
@@ -61,7 +57,6 @@ int main() {
 }]]),
         ls.parser.parse_snippet({
             trig = "ks",
-            wordTrig = true,
         },
         [[
 #include "bits/stdc++.h"
@@ -95,7 +90,6 @@ signed main() {
 }]]),
         ls.parser.parse_snippet({
             trig = "sieve",
-            wordTrig = true,
         },
         [[
 vector<bool> is_prime(1e6+1, 1);
@@ -113,7 +107,6 @@ void sieve(int n = 1e6 + 1) {
 ]]),
         ls.parser.parse_snippet({
             trig = "bs",
-            wordTrig = true,
         },
         [[
 long long low = ${1:0}, high = ${2:n - 1}, mid;
@@ -149,7 +142,6 @@ long long bpow(long long b, long long p, long long m) {
 ]]),
         ls.parser.parse_snippet({
             trig = "imod",
-            wordTrig = true,
         },
         [[
 long long imod(long long n, long long m = 1e9 + 7) {
@@ -158,7 +150,6 @@ long long imod(long long n, long long m = 1e9 + 7) {
 ]]),
         ls.parser.parse_snippet({
             trig = "lc",
-            wordTrig = true,
         },
         [[
 #include "bits/stdc++.h"
@@ -200,7 +191,6 @@ struct ListNode {
 ]]),
         ls.parser.parse_snippet({
             trig = "treenode",
-            wordTrig = true,
         },
         [[
 struct TreeNode {
@@ -211,7 +201,6 @@ struct TreeNode {
 ]]),
         ls.parser.parse_snippet({
             trig = "comb",
-            wordTrig = true,
         },
         [[
 long ncr(int n,int r) {
@@ -232,7 +221,6 @@ long ncr(int n,int r) {
 ]]),
         ls.parser.parse_snippet({
             trig = "debmac",
-            wordTrig = true,
         },
         [[
 #define deb(...) logger(#__VA_ARGS__, __VA_ARGS__)
@@ -245,13 +233,11 @@ void logger(string vars, Args&&... values) {
 ]]),
         ls.parser.parse_snippet({
             trig = "deb",
-            wordTrig = true,
         },
         [[
 cout<<#$1<<" = "<<$1;]]),
         ls.parser.parse_snippet({
             trig = "pbds",
-            wordTrig = true,
         },
         [[
 #include <ext/pb_ds/assoc_container.hpp>
@@ -260,7 +246,6 @@ using ordered_set = tree<int, null_type, less<int>, rb_tree_tag, tree_order_stat
 ]]),
         ls.parser.parse_snippet({
             trig = "auue",
-            wordTrig = true,
         },
         [[
 void add_undirected_unweighted_edge(int u, int v) {
@@ -269,7 +254,6 @@ void add_undirected_unweighted_edge(int u, int v) {
 }]]),
         ls.parser.parse_snippet({
             trig = "adue",
-            wordTrig = true,
         },
         [[
 void add_directed_unweighted_edge(int u, int v) {
@@ -277,7 +261,6 @@ void add_directed_unweighted_edge(int u, int v) {
 }]]),
         ls.parser.parse_snippet({
             trig = "auwe",
-            wordTrig = true,
         },
         [[
 void add_undirected_weighted_edge(int u, int v, int w) {
@@ -286,7 +269,6 @@ void add_undirected_weighted_edge(int u, int v, int w) {
 }]]),
         ls.parser.parse_snippet({
             trig = "adwe",
-            wordTrig = true,
         },
         [[
 void add_directed_weighted_edge(int u, int v, int w) {
@@ -294,7 +276,6 @@ void add_directed_weighted_edge(int u, int v, int w) {
 }]]),
         ls.parser.parse_snippet({
             trig = "dsu",
-            wordTrig = true,
         },
         [[
 class union_find {
@@ -334,7 +315,6 @@ public:
 ]]),
         ls.parser.parse_snippet({
             trig = "krusk",
-            wordTrig = true,
         },
         [[
 pair<long long, vector<tuple<int, int, int>>> kruskal(vector<tuple<int, int, int>> &edges, int &n) {
@@ -356,7 +336,6 @@ pair<long long, vector<tuple<int, int, int>>> kruskal(vector<tuple<int, int, int
 }]]),
         ls.parser.parse_snippet({
             trig = "make_edges",
-            wordTrig = true,
         },
         [[
 vector<tuple<int, int, int>> make_edge_list(vector<vector<pair<int, int>>> &adj) {
@@ -369,5 +348,4 @@ vector<tuple<int, int, int>> make_edge_list(vector<vector<pair<int, int>>> &adj)
     }
     return edges;
 }]]),
-    },
-}
+})
