@@ -1,12 +1,4 @@
 -- vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_add_trailing = 1
-vim.g.nvim_tree_show_icons = {
-    folders = 1,
-    files = 1,
-    git = 1,
-}
-
 require('nvim-tree').setup {
     diagnostics = {
         enable = true,
@@ -27,6 +19,15 @@ require('nvim-tree').setup {
     renderer = {
         indent_markers = {
             enable = true,
+        },
+        highlight_git = true,
+        add_trailing = true,
+        icons = {
+            show = {
+                file = true,
+                folder = true,
+                folder_arrow = true
+            }
         }
     },
 }
