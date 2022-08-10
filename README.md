@@ -9,7 +9,7 @@ collection of my arch dotfiles
 * [alacritty](.config/alacritty/alacritty.yml)
 * [xinitrc](.config/x11/xinitrc)
 * [zathura](.config/zathura/zathurarc)
-* [aliases](./config/zsh/.aliases)
+* [aliases](.config/zsh/.aliases)
 * [ranger](.config/ranger)
 * [dunst](.config/dunst/dunsrc)
 * [picom](.config/picom.conf)
