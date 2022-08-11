@@ -1,0 +1,9 @@
+# packer's compiled plugin file
+.config/nvim/plugin
+.config/nvim/plugin/**
+
+# cache
+.config/zsh/.zcompdump*
+
+# gh-cli secrets
+.config/gh/hosts.yml

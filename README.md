@@ -4,17 +4,25 @@ collection of my arch dotfiles
 
 **theme** - [dracula](https://draculatheme.com)
 
-* [neovim](.config/nvim/init.lua)
-* [zsh](.config/zsh)
-* [alacritty](.config/alacritty/alacritty.yml)
-* [xinitrc](.config/x11/xinitrc)
-* [zathura](.config/zathura/zathurarc)
-* [aliases](.config/zsh/.aliases)
-* [ranger](.config/ranger)
-* [dunst](.config/dunst/dunsrc)
-* [picom](.config/picom.conf)
-* [gitconfig](.gitconfig)
-* [neofetch](.config/neofetch/config.conf)
+* [neovim](dot_config/nvim)
+* [zsh](dot_config/zsh)
+* [alacritty](dot_config/alacritty/alacritty.yml)
+* [xinitrc](dot_config/x11/xinitrc)
+* [gitconfig](dot_gitconfig)
+* [aliases](dot_config/zsh/dot_aliases)
+* [dunst](dot_config/dunst/dunsrc)
+* [picom](dot_config/picom.conf)
+* [zathura](dot_config/zathura/zathurarc)
+
+## misc
+
+* [ranger](dot_config/ranger)
+* [fzf](dot_config/fzf)
+* [user-dirs](dot_config/user-dirs.dirs)
+* [gtk2](dot_config/private_gtk-2.0/gtkfilechooser.ini)
+* [gtk3](dot_config/private_gtk-3.0/settings.ini)
+* [neofetch](dot_config/neofetch/config.conf)
+* [htop](dot_config/private_htop/htoprc)
 
 ## other configs
 
@@ -25,13 +33,8 @@ collection of my arch dotfiles
 * [dmenu](https://github.com/lordlabuckdas/dmenu)
 * [slock](https://github.com/lordlabuckdas/slock)
 
-## misc
+## thanks
 
-* [fzf](.config/fzf)
-* [gtk2](.config/gtk-2.0/gtkfilechooser.ini)
-* [gtk3](.config/gtk-3.0/settings.ini)
-* [user-dirs](.config/user-dirs.dirs)
-
-## note
-
-thanks to [NvChad](https://github.com/NvChad/NvChad) for some inspiration and [lspkind-nvim](https://github.com/onsails/lspkind-nvim) for icons
+- [chezmoi](https://github.com/twpayne/chezmoi/)
+- [NvChad](https://github.com/NvChad/NvChad)
+- [lspkind-nvim](https://github.com/onsails/lspkind-nvim)
