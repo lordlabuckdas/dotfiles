@@ -10,7 +10,7 @@ collection of my arch dotfiles
 * [xinitrc](dot_config/x11/xinitrc)
 * [gitconfig](dot_gitconfig)
 * [aliases](dot_config/zsh/dot_aliases)
-* [dunst](dot_config/dunst/dunsrc)
+* [dunst](dot_config/dunst/dunstrc)
 * [picom](dot_config/picom.conf)
 * [zathura](dot_config/zathura/zathurarc)
 
