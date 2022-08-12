@@ -4,25 +4,30 @@ collection of my arch dotfiles
 
 **theme** - [dracula](https://draculatheme.com)
 
-* [neovim](dot_config/nvim)
-* [zsh](dot_config/zsh)
-* [alacritty](dot_config/alacritty/alacritty.yml)
-* [xinitrc](dot_config/x11/xinitrc)
-* [gitconfig](dot_gitconfig)
-* [aliases](dot_config/zsh/dot_aliases)
-* [dunst](dot_config/dunst/dunstrc)
-* [picom](dot_config/picom.conf)
-* [zathura](dot_config/zathura/zathurarc)
+* [neovim](nvim)
+* [zsh](zsh)
+* [rofi](rofi)
+* [alacritty](alacritty/alacritty.yml)
+* [xinitrc](x11/xinitrc)
+* [gitconfig](gitconfig)
+* [aliases](zsh/.aliases)
+* [dunst](dunst/dunstrc)
+* [picom](picom.conf)
+* [zathura](zathura/zathurarc)
+* [flameshot](flameshot)
+* [gh-cli](gh)
+* [ranger](ranger)
 
 ## misc
 
-* [ranger](dot_config/ranger)
-* [fzf](dot_config/fzf)
-* [user-dirs](dot_config/user-dirs.dirs)
-* [gtk2](dot_config/private_gtk-2.0/gtkfilechooser.ini)
-* [gtk3](dot_config/private_gtk-3.0/settings.ini)
-* [neofetch](dot_config/neofetch/config.conf)
-* [htop](dot_config/private_htop/htoprc)
+* [fzf](fzf)
+* [user-dirs](user-dirs.dirs)
+* [gtk2](gtk2/gtkfilechooser.ini)
+* [gtk3](gtk3/settings.ini)
+* [neofetch](neofetch/config.conf)
+* [htop](htop/htoprc)
+* [mimeapps](mimeapps.list)
+* [pavucontrol](pavucontrol.ini)
 
 ## other configs
 
@@ -35,6 +40,6 @@ collection of my arch dotfiles
 
 ## thanks
 
-- [chezmoi](https://github.com/twpayne/chezmoi/)
+- [dotdrop](https://github.com/deadc0de6/dotdrop)
 - [NvChad](https://github.com/NvChad/NvChad)
 - [lspkind-nvim](https://github.com/onsails/lspkind-nvim)

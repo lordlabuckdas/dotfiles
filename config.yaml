@@ -1,0 +1,112 @@
+config:
+  backup: true
+  create: true
+  dotpath: .
+dotfiles:
+  d_neovim:
+    dst: ~/.config/nvim
+    src: nvim
+    instignore:
+      - '*/plugin'
+    # impignore:
+    #   - '*/plugin'
+    cmpignore:
+      - '*/plugin'
+    upignore:
+      - '*/plugin'
+  d_zsh:
+    dst: ~/.config/zsh
+    src: zsh
+    instignore:
+      - '*/.zcompdump*'
+    # impignore:
+    #   - '*/zcompdump*'
+    cmpignore:
+      - '*/.zcompdump*'
+    upignore:
+      - '*/.zcompdump*'
+  d_rofi:
+    dst: ~/.config/rofi
+    src: rofi
+  d_alacritty:
+    dst: ~/.config/alacritty
+    src: alacritty
+  d_x11:
+    dst: ~/.config/x11
+    src: x11
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  d_dunst:
+    dst: ~/.config/dunst
+    src: dunst
+  f_picom:
+    dst: ~/.config/picom.conf
+    src: picom.conf
+  d_zathura:
+    dst: ~/.config/zathura
+    src: zathura
+  d_flameshot:
+    dst: ~/.config/flameshot
+    src: flameshot
+  d_gh:
+    dst: ~/.config/gh
+    src: gh
+    instignore:
+      - '*/hosts.yml'
+    # impignore:
+    #   - '*/hosts.yml'
+    cmpignore:
+      - '*/hosts.yml'
+    upignore:
+      - '*/hosts.yml'
+  d_ranger:
+    dst: ~/.config/ranger
+    src: ranger
+  d_fzf:
+    dst: ~/.config/fzf
+    src: fzf
+  f_userdirs:
+    dst: ~/.config/user-dirs.dirs
+    src: user-dirs.dirs
+  d_gtk2:
+    dst: ~/.config/gtk-2.0
+    src: gtk2
+  d_gtk3:
+    dst: ~/.config/gtk-3.0
+    src: gtk3
+  d_neofetch:
+    dst: ~/.config/neofetch
+    src: neofetch
+  d_htop:
+    dst: ~/.config/htop
+    src: htop
+  f_mimeapps:
+    dst: ~/.config/mimeapps.list
+    src: mimeapps.list
+  f_pavucontrol:
+    dst: ~/.config/pavucontrol.ini
+    src: pavucontrol.ini
+profiles:
+  arch:
+    dotfiles:
+      - d_neovim
+      - d_zsh
+      - d_rofi
+      - d_alacritty
+      - d_x11
+      - f_gitconfig
+      - d_dunst
+      - f_picom
+      - d_zathura
+      - d_flameshot
+      - d_gh
+      - d_ranger
+      - d_fzf
+      - f_userdirs
+      - d_gtk2
+      - d_gtk3
+      - d_neofetch
+      - d_htop
+      - f_mimeapps
+      - f_pavucontrol
