@@ -2,7 +2,7 @@ return require('packer').startup({function()
     -- meta lol
     use 'wbthomason/packer.nvim'
 
-    -- dracula good, other bad
+    -- GOATed
     use 'Mofiqul/dracula.nvim'
 
     -- good looking icons
@@ -38,6 +38,7 @@ return require('packer').startup({function()
         end,
     }
 
+    -- file tree
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
@@ -58,7 +59,7 @@ return require('packer').startup({function()
     --     end,
     -- }
 
-    -- statusline ftw
+    -- statusline
     use {
         'hoob3rt/lualine.nvim',
         config = function()
@@ -107,6 +108,14 @@ return require('packer').startup({function()
         end,
     }
 
+    -- autocomplete pairs, needed to use snippets and suggestions
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup{}
+        end,
+    }
+
     -- snippet engine
     use {
         'L3MON4D3/LuaSnip',
@@ -127,8 +136,10 @@ return require('packer').startup({function()
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require('bufferline').setup{
-                diagnostics = 'nvim_lsp',
+            require('bufferline').setup {
+                options = {
+                    diagnostics = "nvim_lsp",
+                }
             }
         end,
     }
