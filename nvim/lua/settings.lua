@@ -48,11 +48,12 @@ o.listchars = {
 o.hlsearch = true
 o.incsearch = true
 o.smartcase = true
+o.pumheight = 10
 
 -- indent
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
 o.autoindent = true
 o.smartindent = true
 o.shiftround = true
@@ -75,7 +76,7 @@ o.ttyfast = true
 o.ff = 'unix'
 
 -- md
-cmd[[autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 foldenable foldmethod=indent foldlevel=2]]
+cmd[[autocmd FileType markdown setlocal foldenable foldmethod=indent foldlevel=3]]
 
 -- numbering
 o.number = true
