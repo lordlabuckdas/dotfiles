@@ -15,7 +15,7 @@ vim.api.nvim_set_keymap('n', '<Leader>d', ':bd!<CR>', {})
 
 -- cpp
 vim.cmd[[au filetype cpp nnoremap <Leader>mc :w <bar> !g++ -Wall -Wextra -Wshadow -fsanitize=undefined -std=c++17 -O2 -o %:r % <CR>]]
-vim.cmd[[au filetype cpp nnoremap <Leader>mr :!./%:r < ip.txt > op.txt <CR>]]
+vim.cmd[[au filetype cpp nnoremap <Leader>mr :!./%:r < input.txt > output.txt <CR>]]
 
 -- python
 vim.cmd[[au filetype python nnoremap <Leader>mr :w <bar> !python % <CR>]]

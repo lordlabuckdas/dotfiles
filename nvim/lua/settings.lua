@@ -4,9 +4,6 @@ local cmd = vim.cmd
 
 -- colors
 o.termguicolors = true
-g.dracula_show_end_of_buffer = true
-g.dracula_transparent_bg = true
-cmd[[colorscheme dracula]]
 
 -- providers
 g.loaded_python_provider = false

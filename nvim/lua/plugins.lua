@@ -3,7 +3,16 @@ return require('packer').startup({function()
     use 'wbthomason/packer.nvim'
 
     -- GOATed
-    use 'Mofiqul/dracula.nvim'
+    use {
+      'Mofiqul/dracula.nvim',
+      config = function()
+        require("dracula").setup({
+          show_end_of_buffer = true,
+          transparent_bg = true,
+        })
+        -- require("dracula").load()
+      end,
+    }
 
     -- good looking icons
     use 'kyazdani42/nvim-web-devicons'
