@@ -38,3 +38,6 @@ alias grep='rg -p'
 
 # copy to clipboard
 alias clip='xclip -sel clip'
+
+# cp setup
+alias vcp='v +":vsp input.txt | :sp output.txt | :exe \"normal \<c-w>\<c-w>\" | :exe \"normal \<c-w>35>\""'
