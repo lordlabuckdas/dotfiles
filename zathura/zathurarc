@@ -58,7 +58,7 @@ unmap gg 	# unmap old goto top
 
 set adjust-open width
 set recolor true
-set font "FuraCode Nerd Font 10"
+set font "FiraCode Nerd Font 10"
 set sandbox none
 set statusbar-h-padding 0
 set statusbar-v-padding 0
