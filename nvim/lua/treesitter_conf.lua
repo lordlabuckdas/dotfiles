@@ -4,6 +4,8 @@ require'nvim-treesitter.configs'.setup {
         "go",
         "python",
         "rust",
+        "typescript",
+        "javascript",
     },
     highlight = {
         enable = true,
